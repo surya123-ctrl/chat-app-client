@@ -1,10 +1,10 @@
 import { useContext, useState } from "react"
 import toast from "react-hot-toast";
 import axios from 'axios';
-import { AuthContext } from "../context/AuthContext";
+// import { AuthContext } from "../context/AuthContext";
 const useSignUp = () => {
     const [loading, setLoading] = useState(false);
-    const authUser = useContext(AuthContext);
+    // const authUser = useContext(AuthContext);
     const signUp = async (userDetails) => {
         const success = await handleInputErrors(userDetails);
         if (!success) return {};
@@ -15,7 +15,8 @@ const useSignUp = () => {
             );
             toast.success(response.data.message);
             localStorage.setItem('chat-user', JSON.stringify(response.data))
-            authUser.setAuthUser(response.data);
+            // authUser.setAuthUser(response.data);
+            // console.log('AuthUser after signing', { authUser });
         } catch (error) {
             console.error("Error:", error);
             console.log(error.response);

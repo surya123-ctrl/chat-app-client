@@ -4,14 +4,16 @@ import { AuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
 const useLogin = () => {
     const [loading, setLoading] = useState(false);
-    const authUser = useContext(AuthContext)
+    const authUser = useContext(AuthContext);
+    // console.log(authUser.token);
     const login = async (userDetails) => {
         setLoading(true);
         try {
             const response = await axios.post(`http://localhost:8000/api/auth/login`, userDetails)
             localStorage.setItem('chat-user', JSON.stringify(response.data));
             authUser.setAuthUser(response.data)
-            console.log(response);
+            // console.log('response after login', response.data);
+            console.log('AuthUser after login', authUser);
             toast.success(response.data.message);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
