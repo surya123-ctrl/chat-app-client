@@ -5,7 +5,7 @@ const Conversation = ({ conversation, emoji, lastIndex }) => {
   // console.log(props.conversation._id);
   const { selectedConversation, setSelectedConversation } = useConversations();
   const isSelected = selectedConversation?._id === conversation._id;
-  console.log("isSelected ", isSelected);
+  // console.log("isSelected ", isSelected);
   // const handelSetSelectedConversation = () => {
   //   console.log("Conversation Clicked : ", conversation);
 
