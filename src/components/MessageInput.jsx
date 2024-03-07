@@ -8,7 +8,7 @@ const MessageInput = () => {
     e.preventDefault();
     if (!message) return;
     await sendMessage(message);
-    console.log("Message sent successfully");
+    // console.log("Message sent successfully");
     setMessage("");
   };
   return (

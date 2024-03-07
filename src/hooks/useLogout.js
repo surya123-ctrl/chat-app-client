@@ -8,7 +8,7 @@ const useLogout = () => {
     const logout = async () => {
         setLoading(true);
         try {
-            const response = await axios.post(`http://localhost:8000/api/auth/logout`)
+            const response = await axios.post(`https://chat-app-server-qa7y.onrender.com/api/auth/logout`)
             if (response.error) throw response.error;
             localStorage.removeItem('chat-user');
             authUser.setAuthUser(null);

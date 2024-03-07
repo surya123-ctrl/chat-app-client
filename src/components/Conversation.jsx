@@ -1,17 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 // const useConversations = require("../zustand/useConversations");
 import useConversations from "../zustand/useConversations";
+import { SocketContext } from "../context/SocketContext";
 const Conversation = ({ conversation, emoji, lastIndex }) => {
-  // console.log(props.conversation._id);
   const { selectedConversation, setSelectedConversation } = useConversations();
   const isSelected = selectedConversation?._id === conversation._id;
-  // console.log("isSelected ", isSelected);
-  // const handelSetSelectedConversation = () => {
-  //   console.log("Conversation Clicked : ", conversation);
-
-  //   setSelectedConversation(conversation);
-  //   console.log("selectedConv : ", selectedConversation);
-  // };
+  const { onlineUsers } = useContext(SocketContext);
+  const isOnline = onlineUsers.includes(conversation._id);
+  // console.log("Online Users in Conversation", onlineUsers);
   return (
     <>
       <div
@@ -19,10 +15,10 @@ const Conversation = ({ conversation, emoji, lastIndex }) => {
       ${isSelected ? "bg-pink-500" : ""}`}
         onClick={() => {
           setSelectedConversation(conversation);
-          console.log("Selected conversation", selectedConversation);
+          // console.log("Selected conversation", selectedConversation);
         }}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full ">
             <img src={conversation.profilePicture} alt="user avatar" />
           </div>

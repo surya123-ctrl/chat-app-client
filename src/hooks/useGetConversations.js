@@ -6,17 +6,17 @@ const useGetConversations = () => {
     const [loading, setLoading] = useState(false);
     const [conversations, setConversations] = useState([]);
     const authUser = useContext(AuthContext);
-    console.log("AuthUser, in getConversations", authUser);
+    // console.log("AuthUser, in getConversations", authUser);
     useEffect(() => {
         const getConversations = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:8000/api/users', {
+                const response = await axios.get('https://chat-app-server-qa7y.onrender.com/api/users', {
                     headers: {
                         Authorization: `Bearer ${authUser.authUser.token}`,
                     }
                 });
-                console.log("Response of Conversations: ", response);
+                // console.log("Response of Conversations: ", response);
                 setConversations(response.data);
             } catch (error) {
                 console.log("Hello ", error)

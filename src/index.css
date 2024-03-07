@@ -9,7 +9,7 @@ body {
   background-position: center;
   background-color: aqua;
   background: linear-gradient(); */
-  background: radial-gradient(
+  /* background: radial-gradient(
       114.69% 114.69% at 100% 0%,
       rgba(0, 148, 213, 0.5) 0%,
       rgba(142, 206, 235, 0) 100%
@@ -19,8 +19,31 @@ body {
       rgba(227, 28, 121, 0.4) 0%,
       rgba(227, 28, 121, 0) 100%
     ),
-    #521a5e;
+    #521a5e; */
+  /* background: linear-gradient(
+    180deg,
+    rgba(8, 84, 103, 1) 0%,
+    rgba(175, 167, 187, 1) 35%,
+    rgba(255, 190, 174, 1) 100%
+  ); */
+
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+
   color: white;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -47,4 +70,33 @@ body {
     to(#ec4899)
   );
   background: linear-gradient(white, #ec4899);
+}
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) 0.2s both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }

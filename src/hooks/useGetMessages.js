@@ -11,16 +11,16 @@ const useGetMessages = () => {
     useEffect(() => {
         const getMessages = async () => {
             setLoading(true);
-            console.log('AuthUser in getMessage : ', authUser.authUser.token)
-            console.log('Message in getMessage1 : ', messages);
-            console.log('Selected Conversation :', selectedConversation)
+            // console.log('AuthUser in getMessage : ', authUser.authUser.token)
+            // console.log('Message in getMessage1 : ', messages);
+            // console.log('Selected Conversation :', selectedConversation)
             try {
-                const response = await axios.get(`http://localhost:8000/api/message/${selectedConversation._id}`, {
+                const response = await axios.get(`https://chat-app-server-qa7y.onrender.com/api/message/${selectedConversation._id}`, {
                     headers: {
                         Authorization: `Bearer ${authUser.authUser.token}`
                     }
                 })
-                console.log('Response in getMessage3 : ', response);
+                // console.log('Response in getMessage3 : ', response);
                 setMessages(response.data);
             } catch (error) {
                 toast.error(error.message);
@@ -30,7 +30,7 @@ const useGetMessages = () => {
         }
         if (selectedConversation?._id) getMessages();
     }, [selectedConversation?._id, setMessages])
-    console.log('Message in getMessage2 : ', messages);
+    // console.log('Message in getMessage2 : ', messages);
     return [loading, messages];
 }
 export default useGetMessages;

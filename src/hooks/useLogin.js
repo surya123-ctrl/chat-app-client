@@ -9,11 +9,11 @@ const useLogin = () => {
     const login = async (userDetails) => {
         setLoading(true);
         try {
-            const response = await axios.post(`http://localhost:8000/api/auth/login`, userDetails)
+            const response = await axios.post(`https://chat-app-server-qa7y.onrender.com/api/auth/login`, userDetails)
             localStorage.setItem('chat-user', JSON.stringify(response.data));
             authUser.setAuthUser(response.data)
             // console.log('response after login', response.data);
-            console.log('AuthUser after login', authUser);
+            // console.log('AuthUser after login', authUser);
             toast.success(response.data.message);
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

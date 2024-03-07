@@ -9,16 +9,16 @@ const useSendMessage = () => {
     const authUser = useContext(AuthContext);
     // console.log(authUser.authUser.token);
     const sendMessage = async (message) => {
-        console.log(message);
+        // console.log(message);
         setLoading(true);
         try {
-            console.log(`SelectedConversationId : `, selectedConversation._id)
-            const response = await axios.post(`http://localhost:8000/api/message/send/${selectedConversation._id}`, { message }, {
+            // console.log(`SelectedConversationId : `, selectedConversation._id)
+            const response = await axios.post(`https://chat-app-server-qa7y.onrender.com/api/message/send/${selectedConversation._id}`, { message }, {
                 headers: {
                     Authorization: `Bearer ${authUser.authUser.token}`
                 }
             });
-            console.log("Response : ", response.data.newMessage);
+            // console.log("Response : ", response.data.newMessage);
             setMessages([...messages, response.data.newMessage]);
             toast.success(response.data.message)
         } catch (error) {
